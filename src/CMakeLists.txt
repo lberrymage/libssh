@@ -176,18 +176,18 @@ if (DEFAULT_C_NO_DEPRECATION_FLAGS)
                                     COMPILE_FLAGS ${DEFAULT_C_NO_DEPRECATION_FLAGS})
 endif()
 
-if (CMAKE_USE_PTHREADS_INIT)
+if (CMAKE_USE_WIN32_THREADS_INIT)
+    set(libssh_SRCS
+        ${libssh_SRCS}
+        threads/noop.c
+        threads/winlocks.c
+    )
+elseif (CMAKE_USE_PTHREADS_INIT)
     set(libssh_SRCS
         ${libssh_SRCS}
         threads/noop.c
         threads/pthread.c
     )
-elseif (CMAKE_USE_WIN32_THREADS_INIT)
-        set(libssh_SRCS
-            ${libssh_SRCS}
-            threads/noop.c
-            threads/winlocks.c
-        )
 else()
     set(libssh_SRCS
         ${libssh_SRCS}

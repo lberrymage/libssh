@@ -75,8 +75,6 @@ if (UNIT_TESTING)
 endif ()
 
 # Find out if we have threading available
-set(CMAKE_THREAD_PREFER_PTHREADS ON)
-set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads)
 
 if (WITH_GSSAPI)
